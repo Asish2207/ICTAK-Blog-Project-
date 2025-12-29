@@ -1,57 +1,83 @@
 package Testcases;
-
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import Pages.TrainerPage;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import java.io.FileReader;
+import Base.TestBase;
+import Pages.TrainerCatergory;
+import Pages.TrainerContactUs;
+import Pages.TrainerHome;
+import Pages.TrainerLogin;
+import Pages.TrainerNewPost;
 import java.io.IOException;
-import java.util.Properties;
+import org.openqa.selenium.WebDriver;
 
-public class TrainerTC {
 
-    TrainerPage obj;
+public class TrainerTC extends TestBase{
+    TrainerLogin obj;
+    TrainerHome hbj;
+    TrainerNewPost nbj;
+    TrainerCatergory cbj;
+    TrainerContactUs abj;
+    
     WebDriver driver;
-    Properties prop;
-
-    @BeforeClass
-    public void objInit() throws IOException {
-        //Load config properties
-        FileReader f1 = new FileReader(
-            "E:\\SDET\\Asish\\ICTAK-Blog\\ICTAK-Blog\\src\\test\\resources\\Config.Properties"
-        );
-        prop = new Properties();
-        prop.load(f1);
-        //Initialize WebDriver
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        //Navigate to URL from properties file
-        driver.get(prop.getProperty("url"));
-        //Initialize page object
-        obj = new TrainerPage(driver);
-    }
-
+@BeforeClass
+public void setUpObjects() {
+	
+	obj = new TrainerLogin(driver);
+	hbj = new TrainerHome(driver);
+	nbj = new TrainerNewPost(driver);
+	cbj = new TrainerCatergory(driver);	
+	abj = new TrainerContactUs(driver);
+}
     @Test
     public void tc01() {
         obj.dropDown();
-        obj.LoginPage("suresh123@gmail.com","Suresh123");
-        obj.SubButtn();
+        obj.loginPage("suresh123@gmail.com","Suresh123");
+        obj.subBtn();
+        obj.Logoutbtn();
     }
 
     @Test
     public void tc02() {
         obj.dropDown();
-        obj.LoginPage("suresh12@gmail.com","Suresh123");
-        obj.SubButtn();
+        obj.loginPage("suresh12@gmail.com","Suresh123");
+        obj.subBtn();
+        obj.Logoutbtn();
     }
 
-    @Test
+
+	@Test
     public void tc03() {
         obj.dropDown();
-        obj.LoginPage("suresh123@gmail.com","Suresh12");
-        obj.SubButtn();
+        obj.loginPage("suresh123@gmail.com","Suresh12");
+        obj.subBtn();
+        obj.Logoutbtn();
     }
+	@Test
+    public void tc04() {
+        obj.dropDown();
+        obj.loginPage("suresh@gmail.com","Suresh");
+        obj.subBtn();
+        obj.Logoutbtn();
+	}
+	@Test
+	 public void tc05() {
+		 obj.dropDown();
+	        obj.loginPage("suresh123@gmail.com","Suresh123");
+	        obj.subBtn();
+	        Assert.assertTrue(hbj.clkHome(),"HomePage is there");
+	        hbj.clickHome();
+	        obj.Logoutbtn();
+	        
+	 }
+	 
+	 public void tc06() {
+		 
+	 }
+	
+	 public void tc07() {
+		 
+	 }	
 }
 
 

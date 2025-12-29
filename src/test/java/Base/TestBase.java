@@ -12,17 +12,13 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
 public class TestBase {
-	
-
-	
-
 	    protected WebDriver driver;
 	    protected WebDriverWait wait;
 	    protected Properties prop;
 
 	    // 🔹 Load configuration file
 	    public void readProp() throws IOException {
-	        FileReader f1 = new FileReader("E:\\SDET\\Asish\\ICTAK-Blog\\ICTAK-Blog\\src\\test\\resources\\Config.Properties");
+	        FileReader f1 = new FileReader("C:\\Users\\hp\\git\\ICTAK-Blog-Project-\\src\\test\\resources\\Config.Properties");
 	        prop = new Properties();
 	        prop.load(f1);
 	    }
@@ -34,7 +30,7 @@ public class TestBase {
 
 	        driver = new ChromeDriver();
 	        driver.manage().window().maximize();
-	        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 	        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
 	        // Open the URL from config file
@@ -48,5 +44,6 @@ public class TestBase {
 	            driver.quit();
 	        }
 	    }
-	}
+}
+	
 

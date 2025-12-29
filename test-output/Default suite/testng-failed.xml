@@ -7,7 +7,12 @@
         <methods>
           <include name="tc02"/>
           <include name="tc03"/>
-          <include name="objInit"/>
+          <include name="tc01"/>
+          <include name="tc04"/>
+          <include name="tc05"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="setUpObjects"/>
         </methods>
       </class> <!-- Testcases.TrainerTC -->
     </classes>
